@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: azure;
+  color: azure;
+}
+a{
+  text-decoration: none;
+  color: white;
+}
+a:hover{
+  text-decoration: underline;
+}
+header{
+  height: 70px;
+  background-color: deepskyblue;
+  width: 100%;
+}
+header p {
+  margin: 40px 1% 0 0;
+  float: right;
+}
+.nameOfServise{
+  float: left;
+  margin-left: 1%;
+}
+.sectionSearch{
+  border-bottom: 1px solid #00d17b;
+  min-height: 20px; 
+  margin: 2% 5%;
+  width: 90%;
+}
+.sectionOnFocus{
+  border-bottom: 1px solid deepskyblue;
+  min-height: 20px; 
+  width: 90%;
+}
+section input[type="text"]{
+  width: 90%;
+  border: none;
+  padding-left: 2%;
+  background-color: azure;
+  color: deepskyblue;
+}
+section input[type="text"]:focus{
+  outline: none;
+}
+.inputSubmit{
+  float: right;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-image: url('../images/iconSearchGreen.png');
+  background-repeat: no-repeat;
+  background-color: azure;
+}
+.inputOnFocus{
+  background-image: url('../images/iconSearchBlue.png');
+}
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  height: 50px;
+  background-color:deepskyblue ;
+  padding: 0 0.5%;
+}
+nav li {
+  flex: 1 1;
+  height: 100%;
+  display: flex;
+  transform: skew(-15deg);
+  cursor: pointer;
+}
+nav li > p{
+  width: 100%;
+  text-align: center;
+  transform: skew(15deg);
+}
+.activePublisher{
+  background-color: #00d17b;
+}
+.newsReturnWrapper{
+  margin: 3%;
+}
+.news{
+  display: flex;
+  flex-wrap: wrap;
+}
+.itemOfNews{
+  flex: 1 43%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2%;
+  background-color: #00d17b;
+  padding: 0 1% 1% 1%;
+}
+.itemOfNews span{
+  float: right;
+  margin-right: 1%;
+  cursor: pointer;
+}
+.itemOfNews .picture{
+  display: inline;
+}
+.itemOfNews .picture{
+  cursor: pointer;
+}
+.itemOfNews .picture:hover{
+  text-decoration: underline;
+}
+.picture p {
+  display: inline;
+}
+.itemOfNews:nth-child(even){
+  margin-left: 5%;
+}
+.lastItem{
+  margin: 2% 25% 0 25%;
+}
+.massage{
+  height: 300px;
+  color: deepskyblue;
+}
+footer{
+  text-align: right;
+  background-color: deepskyblue;
+}
+footer p{
+  float: left;
+  margin-left: 1%; 
+}
+footer > div{
+  text-align: left;
+  display: inline-block;
+  margin-right: 1%; 
+}
+footer span{
+  font-weight: 400;
+}
+footer h4{
+  margin: 3% 0;
+}
+.popup{
+  width:80%;
+  height: 85%;
+  background-color: rgba(0,0,0,0.7);
+  position:fixed;
+  top:10%;
+  left:10%;
+}
+.popup .popupContent{
+  margin: 3% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width:90%;
+  height: 90%;
+}
+.popup .closePopup{
+  float: right;
+  margin-right: 1%;
+  color: azure;
+}
+.popup img{
+  max-width: 85%;
+}
