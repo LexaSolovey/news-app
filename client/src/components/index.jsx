@@ -2,64 +2,47 @@ import React, { Component } from 'react';
 
 import '../styles/index.css';
 
+import Header from './Header';
+import Search from './Search';
+import Navigation from './Navigation';
 import RenderingNews from './RenderingNews';
+import Footer from './Footer';
 
 import { connect } from 'react-redux';
 
-import getDate from '../utils/getDate';
 import { fetchNewsData, fetchCountVisitsOfPage } from '../utils/Api';
-import filterContentNews from '../utils/searchNews';
+import filterContentNews from '../utils/filterContentNews';
 
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      focused: false,
       requestFailed: false,
       visitsToday: [],
     }
-    this.onFocusInput = this.onFocusInput.bind(this);
-    this.onBlurInput = this.onBlurInput.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.findNews = this.findNews.bind(this);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-  }
-
-  onFocusInput() {
-    this.setState({focused: true});
-  }
-
-  onBlurInput() {
-    this.setState({focused: false});
-  }
-
-  findNews(event){
-    this.props.onFindNews(event.target.value);
-  }
-
-  handleInputChange(event) {
-    this.props.onFindNews(event.target.value);
-  }
-
-  changeItemPublusher(index) {
-    this.props.changePublusher(index);
-    this.getNewsData(this.props.publishers[index].apiCode);
+    this.setInputValue = this.setInputValue.bind(this);
+    this.setChosenItemOfPublishers = this.setChosenItemOfPublishers.bind(this);
   }
 
   getNewsData(publisher){
     fetchNewsData(publisher)
-    .then(
-      ({listOfNews}) => this.props.newsDataToState(listOfNews.data.articles),
-      (error) => {
-        this.setState({requestFailed: true});
-        throw error;
-      }
-    );
+      .then(
+        ({listOfNews}) => this.props.newsDataToState(listOfNews.data.articles),
+        (error) => {
+          this.setState({requestFailed: true});
+          throw error;
+        }
+      );
+  }
+
+  setInputValue(inputValue) {
+    this.props.onFindNews(inputValue.inputTargetValue);
+  }
+
+  setChosenItemOfPublishers(activePublisherIndex) {
+    this.props.changePublusher(activePublisherIndex.publisher);
+    this.getNewsData(this.props.publishers[activePublisherIndex.publisher].apiCode);
   }
 
   componentDidMount() {
@@ -68,74 +51,31 @@ class App extends Component {
   }
 
   render() {
-    let classNames = {
-      sectionSearch: 'sectionSearch',
-      inputSubmit: 'inputSubmit',
-    }
-    
-    if(this.state.focused) {
-      classNames.sectionSearch += ' sectionOnFocus';
-      classNames.inputSubmit += " inputOnFocus";
-    }
-
     return (
       <div className="App">
-        <header>
-          <div className="nameOfServise">
-            <h1>News App</h1>
-          </div>
-          <p>{getDate()}</p>
-        </header>
-        <section className={classNames.sectionSearch}>
-          <form  onSubmit={this.handleSubmit}>
-            <input 
-              type="text"
-              onChange={this.findNews}
-              onFocus={this.onFocusInput}
-              onBlur={this.onBlurInput} />
-              <input className={classNames.inputSubmit}
-              type="submit" value="" 
-            />
-          </form>
-        </section>
-        <nav>
-          <ul>
-            {this.props.publishers.map((publisher, index) => {
-              let classNameOfItem = '';
-              if(this.props.activePublisher === index) classNameOfItem = 'activePublisher';
-              return <li 
-                        key={index} 
-                        className={classNameOfItem}
-                        onClick={this.changeItemPublusher.bind(this, index)}
-                      >
-                        <p>{publisher.name}</p>
-                      </li>
-            })}
-          </ul>
-        </nav>
+        <Header />
+        <Search setInputValue = {this.setInputValue}/>
+        <Navigation 
+          publishers = {this.props.publishers}
+          activePublisher = {this.props.activePublisher}
+          setChosenItemOfPublishers = {this.setChosenItemOfPublishers}
+        />
         <RenderingNews 
           listOfNews = {this.props.listOfNews}
           requestFailed = {this.state.requestFailed}
           filterNews = {this.props.filterNews}
         />
-        <footer>
-          <p>Views today: {this.state.visitsToday.viewsOfPage}</p>
-          <div className="developerInfo">
-            <h4>Developed by: <span>Aleksey Androsuk</span></h4>
-            <h4>Contact: <span>xoxach5@gmail.com</span></h4>
-          </div>
-        </footer>
+        <Footer visitsToday = {this.state.visitsToday} />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-    publishers: state.publisherstoState,
-    activePublisher: state.changePublusher,
-    listOfNews: filterContentNews(state.newsDataToState, state.filterNews),
-    filterNews: state.filterNews,
-    session: state.session,
+  publishers: state.publisherstoState,
+  activePublisher: state.changePublusher,
+  listOfNews: filterContentNews(state.newsDataToState, state.filterNews),
+  filterNews: state.filterNews,
 })
 
 const mapDispatchToProps = () => (
