@@ -16,9 +16,7 @@ class RenderingNews extends Component {
   }
 
   setValue (item) {
-    item.currentItemOfNews
-      ? this.setState({ popupVisible: item.popupVisible, currentItemOfNews: item.currentItemOfNews })
-      : this.setState({ popupVisible: item.popupVisible })
+      this.setState({ popupVisible: item.popupVisible, currentItemOfNews: item.currentItemOfNews })
   }
   
   render() {
