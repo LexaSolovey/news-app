@@ -80,15 +80,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = () => (
   dispatch => ({
-    changePublusher: (activePublisher) => {
-      dispatch({ type: 'CHANGE_PUBLISHER', payload: activePublisher})
-    },
-    newsDataToState: (listOfNews) => {
-      dispatch({type: 'NEWS_DATA_TO_STATE', payload: listOfNews})
-    },
-    onFindNews : (newsLine) => {
-      dispatch({ type: 'FIND_NEWS', payload: newsLine})
-    },
+    changePublusher: activePublisher => dispatch({ type: 'CHANGE_PUBLISHER', payload: activePublisher}),
+    newsDataToState: listOfNews => dispatch({type: 'NEWS_DATA_TO_STATE', payload: listOfNews}),
+    onFindNews: newsLine => dispatch({ type: 'FIND_NEWS', payload: newsLine}),
   })
 )
 
