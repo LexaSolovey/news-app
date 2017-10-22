@@ -41,7 +41,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-http.createServer(app).listen(3001, function(){
+http.createServer(app).listen(process.env.PORT || 3001, function(){
   console.log('Express server listening on port 3001');
 });
 
