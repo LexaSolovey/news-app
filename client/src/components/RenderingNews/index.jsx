@@ -39,7 +39,7 @@ class RenderingNews extends Component {
 
     return (
       <div className="newsReturnWrapper">
-        {this.state.popupVisible ? popup : null}
+          {this.state.popupVisible ? popup : null}
           {content}
       </div>
     );

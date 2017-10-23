@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Icon } from 'react-fa';
 
 import '../styles/index.css';
 
@@ -51,21 +52,27 @@ class App extends Component {
   }
 
   render() {
+    const spinner = 
+      <div className="spinner">
+        <Icon size = "3x" spin name="spinner" />
+      </div>;
+
     return (
       <div className="App">
-        <Header />
+        <Header setChosenItemOfPublishers={this.setChosenItemOfPublishers} />
         <Search setInputValue = {this.setInputValue}/>
         <Navigation 
-          publishers = {this.props.publishers}
-          activePublisher = {this.props.activePublisher}
-          setChosenItemOfPublishers = {this.setChosenItemOfPublishers}
+          publishers={this.props.publishers}
+          activePublisher={this.props.activePublisher}
+          setChosenItemOfPublishers={this.setChosenItemOfPublishers}
         />
+        {this.props.listOfNews.length === 0  && this.props.filterNews === '' ? spinner : null}
         <RenderingNews 
-          listOfNews = {this.props.listOfNews}
-          requestFailed = {this.state.requestFailed}
-          filterNews = {this.props.filterNews}
+          listOfNews={this.props.listOfNews}
+          requestFailed={this.state.requestFailed}
+          filterNews={this.props.filterNews}
         />
-        <Footer visitsToday = {this.state.visitsToday} />
+        <Footer visitsToday={this.state.visitsToday} />
       </div>
     );
   }

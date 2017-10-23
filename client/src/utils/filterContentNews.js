@@ -1,13 +1,15 @@
 export default function filterContentNews(state, filter){
-  const news = state.filter(item => {
-      if(item.description.includes(filter) ||
-        item.title.includes(filter) ||
-        item.description.toLowerCase().includes(filter) ||
-        item.title.toLowerCase().includes(filter) ||
-        item.description.toUpperCase().includes(filter) ||
-        item.title.toUpperCase().includes(filter))
+  const news = state.filter( (item) => {
+    const arrToSerch = `${item.title} ${item.description}`.split(' ');
+    const result = arrToSerch.filter( (word) =>{
+      if(word.substring(0, filter.length) === filter ||
+          word.toLowerCase().substring(0, filter.length) === filter ||
+          word.toUpperCase().substring(0, filter.length) === filter){
         return item;
-      else return undefined;
+      }
+      return undefined;
+    });
+    return result.length !== 0;
   });
   return news;
 }

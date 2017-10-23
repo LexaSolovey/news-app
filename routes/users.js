@@ -6,7 +6,7 @@ setTimeout(() => {
   var date = new Date();
   var hours = date.getHours();
   var minutes = date.getMinutes();
-  if(hours === 23 && minutes >= 59)
+  if(hours === 23 && minutes === 59)
     viewsToday = 0;
 }, 59000)
 

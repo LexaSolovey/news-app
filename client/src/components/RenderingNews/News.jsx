@@ -33,16 +33,18 @@ export default class News extends Component {
           <h3>{item.title}</h3>
           <p>{item.description}</p>
           <div>
-            <a href={item.url} target="_blank">Read more... </a>
-            <div className="picture" onClick={this.openPopup.bind(this, index)}> <p>or</p> show picture</div>
+            <a href={item.url} target="_blank">Read more...</a>
+            {' or '} 
+            <div className="picture" onClick={this.openPopup.bind(this, index)}>show picture</div>
             <Icon name="thumbs-o-up " size = "lg" onClick={this.addLike}/>
           </div>
         </div>
       );
     });
+
     return (
       <div className="news">
-        { content }
+        {content}
       </div>
     );
   }
