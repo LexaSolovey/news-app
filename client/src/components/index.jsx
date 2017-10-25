@@ -49,7 +49,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getNewsData(this.props.publishers[this.props.activePublisher].apiCode);
-    // fetchCountVisitsOfPage().then(visits => this.setState({ visitsToday: visits }));
+    fetchCountVisitsOfPage().then(visits => this.setState({ visitsToday: visits }));
   }
 
   render() {
