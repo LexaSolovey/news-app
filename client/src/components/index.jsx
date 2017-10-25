@@ -48,8 +48,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getNewsData(this.props.publishers[this.props.activePublisher].apiCode);
     fetchCountVisitsOfPage().then(visits => this.setState({ visitsToday: visits }));
+    this.getNewsData(this.props.publishers[this.props.activePublisher].apiCode);
   }
 
   render() {
