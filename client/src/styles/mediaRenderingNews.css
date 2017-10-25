@@ -1,0 +1,12 @@
+@media (max-width: 767px) { 
+  .itemOfNews{
+    flex: 1 100%;
+    margin-top: 2.5vw;
+  }
+  .itemOfNews:nth-child(even){
+    margin-left: 0;
+  }
+  .lastItem{
+    margin: 15% 0;
+  }
+}

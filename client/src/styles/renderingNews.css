@@ -1,0 +1,90 @@
+.newsReturnWrapper{
+  margin: 3%;
+}
+.spinner{
+  text-align: center;
+  color: deepskyblue;
+  padding: 10% 0 15% 0; 
+}
+.news{
+  display: flex;
+  flex-wrap: wrap;
+}
+.itemOfNews{
+  flex: 1 43%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2vw;
+  background-color: #00d17b;
+  padding: 0 1% 1vw 1%;
+}
+.itemOfNews span{
+  float: right;
+  margin-right: 1%;
+  cursor: pointer;
+}
+.itemOfNews .picture{
+  display: inline;
+  cursor: pointer;
+}
+.itemOfNews .picture:hover{
+  text-decoration: underline;
+}
+.picture p {
+  display: inline;
+}
+.itemOfNews:nth-child(even){
+  margin-left: 5%;
+}
+.lastItem{
+  margin: 2% 25% 0 25%;
+}
+.massage{
+  height: 300px;
+  color: deepskyblue;
+}
+footer{
+  text-align: right;
+  background-color: deepskyblue;
+}
+footer p{
+  float: left;
+  margin-left: 1%; 
+}
+footer > div{
+  text-align: left;
+  display: inline-block;
+  margin-right: 1%; 
+}
+footer span{
+  font-weight: 400;
+}
+footer h4{
+  margin: 3% 0;
+}
+.popup{
+  width:100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  position:fixed;
+  top:0;
+  left:0;
+}
+.popup .popupContent{
+  margin: 3% auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width:90%;
+  height: 90%;
+}
+.popup .closePopup{
+  float: right;
+  margin-right: 1%;
+  cursor: pointer;
+}
+.popup img{
+  max-width: 85%;
+}

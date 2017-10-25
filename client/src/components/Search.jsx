@@ -47,7 +47,7 @@ export default class Search extends Component {
               onChange={this.findNews}
               onFocus={this.onFocusInput}
               onBlur={this.onBlurInput} />
-              <input className={classNames.inputSubmit}
+            <input className={classNames.inputSubmit}
               type="submit" value="" 
             />
           </form>

@@ -5,6 +5,9 @@ import Failed from '../massages/Failed';
 import Popup from './Popup';
 import News from './News';
 
+import '../../styles/renderingNews.css';
+import '../../styles/mediaRenderingNews.css';
+
 class RenderingNews extends Component {
   constructor(props){
     super(props);
@@ -16,13 +19,13 @@ class RenderingNews extends Component {
   }
 
   setValue (item) {
-      this.setState({ popupVisible: item.popupVisible, currentItemOfNews: item.currentItemOfNews })
+      this.setState({ popupVisible: item.popupVisible, currentItemOfNews: item.currentItemOfNews });
   }
   
   render() {
     let content,
         popup;
-    if(!this.props.requestFailed){
+    if(!this.props.requestFailed) {
       if(this.props.listOfNews.length !== 0) {
         popup = 
           <Popup 

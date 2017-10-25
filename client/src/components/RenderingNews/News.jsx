@@ -36,7 +36,9 @@ export default class News extends Component {
             <a href={item.url} target="_blank">Read more...</a>
             {' or '} 
             <div className="picture" onClick={this.openPopup.bind(this, index)}>show picture</div>
-            <Icon name="thumbs-o-up " size = "lg" onClick={this.addLike}/>
+            <div onClick={this.addLike}>
+              <Icon name="thumbs-o-up " size = "lg"/>
+            </div>
           </div>
         </div>
       );

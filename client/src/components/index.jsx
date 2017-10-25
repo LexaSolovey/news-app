@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Icon } from 'react-fa';
 
 import '../styles/index.css';
+import '../styles/media.css';
 
 import Header from './Header';
 import Search from './Search';
@@ -48,7 +49,7 @@ class App extends Component {
 
   componentDidMount() {
     this.getNewsData(this.props.publishers[this.props.activePublisher].apiCode);
-    fetchCountVisitsOfPage().then(visits => this.setState({ visitsToday: visits }));
+    // fetchCountVisitsOfPage().then(visits => this.setState({ visitsToday: visits }));
   }
 
   render() {
@@ -66,7 +67,9 @@ class App extends Component {
           activePublisher={this.props.activePublisher}
           setChosenItemOfPublishers={this.setChosenItemOfPublishers}
         />
-        {this.props.listOfNews.length === 0  && this.props.filterNews === '' ? spinner : null}
+        {this.props.listOfNews.length === 0  && this.props.filterNews === '' && !this.state.requestFailed
+          ? spinner 
+          : null}
         <RenderingNews 
           listOfNews={this.props.listOfNews}
           requestFailed={this.state.requestFailed}
